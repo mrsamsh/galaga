@@ -14,6 +14,7 @@ In later stages, some enemies even break from an entering group in a frantic att
 I Decided to remake MSX version as i'm learning games programming with SDL & Open GL.
 
 <strong>What I did to the code</strong>
+
 The game didn't work as it uses old OpenGL. Now it runs on mac (at least). Text in the game uses some hack (printing on SDL_Surface object then using the object to generate OpenGL texture. This didn't render correctly, as SDL_Surface uses padding every pitch. I had to do some hack to generate proper pixel data from SDL_Surface. It is inefficient at all, but it works.
 
 <strong> Required Libraries </strong>
