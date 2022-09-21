@@ -19,8 +19,6 @@ private:
 	int lives = 3;
 	LevelsUP levels;
 
-
-
 public:
 
 	static Rocket rocket[2];

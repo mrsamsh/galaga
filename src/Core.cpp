@@ -59,15 +59,13 @@ CCore::CCore(void)
             //Create context
             gContext = SDL_GL_CreateContext(window);
 
-
-
             if (gContext == NULL)
             {
                 printf("OpenGL context could not be created! SDL Error: %s\n", SDL_GetError());
             }
             else
             {
-                //Initialize GLEW
+                //Initialize glad
                 if (!gladLoadGLLoader((GLADloadproc)SDL_GL_GetProcAddress))
                 {
                     printf("Error initializing GLAD! \n");
@@ -84,7 +82,6 @@ CCore::CCore(void)
 
 				glEnable(GL_MULTISAMPLE);
                 glViewport(0, 0, CCFG::SCREEN_WIDTH, CCFG::SCREEN_HEIGHT);
-				// GLKMatrix4MakeOrtho(0, CCFG::SCREEN_WIDTH, CCFG::SCREEN_HEIGHT, 0, -2, 2);
                 gluOrtho2D(0, CCFG::SCREEN_WIDTH, CCFG::SCREEN_HEIGHT, 0);
             }
         }
