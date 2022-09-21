@@ -28,7 +28,7 @@ The game didn't work as it uses old OpenGL. Now it runs on mac (at least). Text 
 
  <strong> Build instructions </strong>
 
-	make run
+	make
 
  <strong> To run the game: </strong>
 
