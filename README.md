@@ -22,7 +22,7 @@ The game didn't work as it uses old OpenGL. Now it runs on mac (at least). Text 
  - SDL2_mixer
  - SDL2_TTF
  - OpenGL
- ~~- Glew~~
+ - ~~Glew~~ (no longer needed)
  - Glu
 
 
