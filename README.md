@@ -15,23 +15,26 @@ I Decided to remake MSX version as i'm learning games programming with SDL & Ope
 
 <strong>What I did to the code</strong>
 
-The game didn't work as it uses old OpenGL. Now it runs on mac (at least). Text in the game uses some hack (printing on SDL_Surface object then using the object to generate OpenGL texture. This didn't render correctly, as SDL_Surface uses padding every pitch. I had to do some hack to generate proper pixel data from SDL_Surface. It is inefficient at all, but it works.
+The game didn't work as it uses old OpenGL. Now it runs on mac (at least). Text in the game wasn't showing properly, as SDL_Surface has padding for pixels in each row. I solved this by using glPixelStorei. Also the program depended on Glu and System OpenGL libraries, I substituted that with local GLAD files.
 
 <strong> Required Libraries </strong>
  - SDL2
  - SDL2_image
  - SDL2_mixer
  - SDL2_TTF
- - OpenGL
- - ~~Glew~~ (no longer needed)
- - Glu
+ - ~~OpenGL~~ (now completely uses glad instead)
+ - ~~Glew~~   (no longer needed)
+ - ~~Glu~~    (no longer needed)
 
 
  <strong> Build instructions </strong>
 
-	make
+	mkdir build
+	cd build
+	cmake -S ..
+	cmake --build .
 
  <strong> To run the game: </strong>
 
-`./build/app`
+`./galaga`
 
