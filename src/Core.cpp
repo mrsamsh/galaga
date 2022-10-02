@@ -82,7 +82,7 @@ CCore::CCore(void)
 
 				glEnable(GL_MULTISAMPLE);
                 glViewport(0, 0, CCFG::SCREEN_WIDTH, CCFG::SCREEN_HEIGHT);
-                gluOrtho2D(0, CCFG::SCREEN_WIDTH, CCFG::SCREEN_HEIGHT, 0);
+                glOrtho(0, CCFG::SCREEN_WIDTH, CCFG::SCREEN_HEIGHT, 0, -2, 2);
             }
         }
     }
