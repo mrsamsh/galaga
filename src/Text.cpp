@@ -50,22 +50,10 @@ void Text2D::loadFont(std::string file, SDL_Color color, int size, std::string m
 	}
 
 	//Set OpenGl Color
-	
-	int w = sFont->w;
-	int pitch = sFont->pitch / 4;
-	uint32_t* pixels = (uint32_t*)sFont->pixels;
-	uint32_t* data = new uint32_t[sFont->w * sFont->h];
-	for (int i = 0; i < sFont->h; ++i)
-	{
-		memcpy(&data[i * w], &pixels[i * pitch], sizeof(uint32_t) * w);
-	}
-
+	glPixelStorei(GL_UNPACK_ROW_LENGTH, sFont->pitch / 4);
 	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR);
 	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_NEAREST);
-	glTexImage2D(GL_TEXTURE_2D, 0, GL_RGBA, sFont->w, sFont->h, 0, GL_BGRA, GL_UNSIGNED_BYTE, data);
-
-	delete[] data;
-
+	glTexImage2D(GL_TEXTURE_2D, 0, GL_RGBA, sFont->w, sFont->h, 0, GL_BGRA, GL_UNSIGNED_BYTE, sFont->pixels);
 };
 
 void Text2D::setText(std::string message) {
@@ -82,21 +70,11 @@ void Text2D::setText(std::string message) {
 	this->Message = message;
 	sFont = TTF_RenderText_Blended(font, this->Message.c_str(), color);
 
-	int w = sFont->w;
-	int pitch = sFont->pitch / 4;
-	uint32_t* pixels = (uint32_t*)sFont->pixels;
-	uint32_t* data = new uint32_t[sFont->w * sFont->h];
-	for (int i = 0; i < sFont->h; ++i)
-	{
-		memcpy(&data[i * w], &pixels[i * pitch], sizeof(uint32_t) * w);
-	}
-
 	//Set OpenGl Color
+	glPixelStorei(GL_UNPACK_ROW_LENGTH, sFont->pitch / 4);
 	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR);
 	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_NEAREST);
-	glTexImage2D(GL_TEXTURE_2D, 0, GL_RGBA, sFont->w, sFont->h, 0, GL_BGRA, GL_UNSIGNED_BYTE, data);
-
-	delete[] data;
+	glTexImage2D(GL_TEXTURE_2D, 0, GL_RGBA, sFont->w, sFont->h, 0, GL_BGRA, GL_UNSIGNED_BYTE, sFont->pixels);
 }
 
 void Text2D::render() {
