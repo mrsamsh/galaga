@@ -80,9 +80,11 @@ CCore::CCore(void)
                     }
                 }
 
-				glEnable(GL_MULTISAMPLE);
-                glViewport(0, 0, CCFG::SCREEN_WIDTH, CCFG::SCREEN_HEIGHT);
-                glOrtho(0, CCFG::SCREEN_WIDTH, CCFG::SCREEN_HEIGHT, 0, -2, 2);
+                glEnable(GL_MULTISAMPLE);
+                int w, h;
+                SDL_GL_GetDrawableSize(window, &w, &h);
+                glViewport(0, 0, w, h);
+                glOrtho(0, w, h, 0, -2, 2);
             }
         }
     }
