@@ -51,10 +51,10 @@ CCore::CCore(void)
         else
         {
 
-            if (CCFG::fullScreen)
-            {
-                SDL_SetWindowFullscreen(window, SDL_WINDOW_FULLSCREEN);
-            }
+            // if (CCFG::fullScreen)
+            // {
+            //     SDL_SetWindowFullscreen(window, SDL_WINDOW_FULLSCREEN);
+            // }
 
             //Create context
             gContext = SDL_GL_CreateContext(window);
@@ -84,7 +84,7 @@ CCore::CCore(void)
                 int w, h;
                 SDL_GL_GetDrawableSize(window, &w, &h);
                 glViewport(0, 0, w, h);
-                glOrtho(0, w, h, 0, -2, 2);
+                glOrtho(0, CCFG::SCREEN_WIDTH, CCFG::SCREEN_HEIGHT, 0, -2, 2);
             }
         }
     }
